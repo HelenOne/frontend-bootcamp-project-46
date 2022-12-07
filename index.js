@@ -10,9 +10,6 @@ const gendiff = (filepath1, filepath2) => {
   const keys2 = Object.keys(obj2);
   const allSortedKeys = _.sortBy(_.uniq([...keys1, ...keys2]));
 
-  console.log(obj1);
-  console.log(obj2);
-
   const diffObj = {};
   const statuses = {
     theSame: " ",
