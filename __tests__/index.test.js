@@ -1,5 +1,5 @@
 import { test, expect } from "@jest/globals";
-import genDiff from "../index.js";
+import genDiff from "../src/index.js";
 import path from "path";
 import fs from "fs";
 import { fileURLToPath } from "url";
@@ -15,8 +15,17 @@ const readFile = (filename) =>
 const file1 = getFixturePath("file1.json");
 const file2 = getFixturePath("file2.json");
 
-test("Compare plain objects", () => {
+const yaml1 = getFixturePath("file1.yml");
+const yaml2 = getFixturePath("file2.yml");
+
+test("Check genDiff with json", () => {
   const expected = genDiff(file1, file2);
+  const actual = readFile("diff.json");
+  expect(expected).toEqual(JSON.parse(actual));
+});
+
+test("Check genDiff with yaml", () => {
+  const expected = genDiff(yaml1, yaml2);
   const actual = readFile("diff.json");
   expect(expected).toEqual(JSON.parse(actual));
 });

@@ -1,9 +1,13 @@
 import fs from "fs";
 import _ from "lodash";
+import parse from "./parser.js";
+import path from "path";
+
+const getExtension = (filepath) => path.extname(filepath).slice(1);
 
 const gendiff = (filepath1, filepath2) => {
-  const obj1 = JSON.parse(fs.readFileSync(filepath1));
-  const obj2 = JSON.parse(fs.readFileSync(filepath2));
+  const obj1 = parse(fs.readFileSync(filepath1), getExtension(filepath1));
+  const obj2 = parse(fs.readFileSync(filepath2), getExtension(filepath2));
 
   const keys1 = Object.keys(obj1);
   const keys2 = Object.keys(obj2);
