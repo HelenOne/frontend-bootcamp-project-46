@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "lint": "eslint index.js",
-    "test": "npx jest"
+    "test": "npx jest --coverage"
   },
   "repository": {
     "type": "git",
