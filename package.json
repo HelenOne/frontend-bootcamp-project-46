@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "makelint": "eslint index.js",
+    "lint": "eslint index.js",
     "test": "npx jest"
   },
   "repository": {
