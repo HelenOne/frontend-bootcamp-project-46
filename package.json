@@ -21,9 +21,10 @@
   "dependencies": {
     "commander": "^9.4.1",
     "esm": "^3.2.25",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "make": "^0.8.1"
   },
-    "jest": {
+  "jest": {
     "testEnvironment": "node"
   },
   "devDependencies": {
