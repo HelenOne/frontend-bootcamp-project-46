@@ -23,7 +23,7 @@ test("Check genDiff with json", () => {
   const actual = readFile("diff.json");
   expect(expected).toEqual(JSON.parse(actual));
 });
-
+ 
 test("Check genDiff with yaml", () => {
   const expected = genDiff(yaml1, yaml2);
   const actual = readFile("diff.json");
