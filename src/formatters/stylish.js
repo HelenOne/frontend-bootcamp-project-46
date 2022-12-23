@@ -41,7 +41,7 @@ const stylish = (diff) => {
           return buildObject(item.value, statuses.added);
         case "theSame":
           return buildObject(item.value, statuses.theSame);
-        case "addBoth":
+        case "updated":
           return [
             buildObject(item.value1, statuses.removed),
             buildObject(item.value2, statuses.added),

@@ -3,6 +3,7 @@ import _ from "lodash";
 import parse from "./parser.js";
 import path from "path";
 import stylish from "./formatters/stylish.js";
+import plain from "./formatters/plain.js";
 
 const compareObjects = (obj1, obj2) => {
   const keys1 = Object.keys(obj1);
@@ -31,7 +32,7 @@ const compareObjects = (obj1, obj2) => {
 
     return {
       key,
-      status: "addBoth",
+      status: "updated",
       value1,
       value2,
     };
@@ -90,8 +91,8 @@ const gendiff = (filepath1, filepath2, format = "stylish") => {
   switch (format) {
     case "stylish":
       return stylish(compareObjects(obj1, obj2));
-    // case "plain":
-    //   return plain(compareObjects(obj1, obj2));
+    case "plain":
+      return plain(compareObjects(obj1, obj2));
     // case "json":
     //   return json(compareObjects(obj1, obj2));
     default:
