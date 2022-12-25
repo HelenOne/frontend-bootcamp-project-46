@@ -1,7 +1,5 @@
-import { Command } from 'commander';
+import { program } from 'commander';
 import gendiff from '../src/index.js';
-
-const program = new Command();
 
 program
   .description(
