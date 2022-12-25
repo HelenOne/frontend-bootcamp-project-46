@@ -19,25 +19,25 @@ const yaml1 = getFixturePath("file1.yml");
 const yaml2 = getFixturePath("file2.yml");
 
 test("Check genDiff with json", () => {
-  const expected = genDiff(file1, file2);
-  const actual = readFile("diff.txt");
+  const expected = readFile("diff.txt");
+  const actual = genDiff(file1, file2);
   expect(expected).toEqual(actual);
 });
 
 test("Check genDiff with yaml", () => {
-  const expected = genDiff(yaml1, yaml2);
-  const actual = readFile("diff.txt");
+  const expected = readFile("diff.txt");
+  const actual = genDiff(yaml1, yaml2);
   expect(expected).toEqual(actual);
 });
 
 test("Check genDiff with -f plain", () => {
-  const expected = genDiff(yaml1, yaml2, "plain");
-  const actual = readFile("diffPlain.txt");
+  const expected = readFile("diffPlain.txt");
+  const actual = genDiff(yaml1, yaml2, "plain");
   expect(expected).toEqual(actual);
 });
 
 test("Check genDiff with -f json", () => {
-  const expected = genDiff(file1, file2, "json");
-  const actual = readFile("diff.json");
+  const expected = readFile("diff.json");
+  const actual = genDiff(file1, file2, "json");
   expect(expected).toEqual(actual);
 });
