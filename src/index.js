@@ -20,15 +20,15 @@ const compareObjects = (obj1, obj2) => {
     }
 
     if (_.isEqual(value1, value2)) {
-      return { key, status: "theSame", value: value1 }; // equal
+      return { key, status: "theSame", value: value1 };
     }
 
     if (!_.has(obj1, key)) {
-      return { key, status: "added", value: value2 }; // add second
+      return { key, status: "added", value: value2 };
     }
 
     if (!_.has(obj2, key)) {
-      return { key, status: "removed", value: value1 }; // add first
+      return { key, status: "removed", value: value1 };
     }
 
     return {
@@ -38,49 +38,6 @@ const compareObjects = (obj1, obj2) => {
       value2,
     };
   });
-
-  ////// OLD SOLUTION //////
-
-  // const statuses = {
-  //   theSame: " ",
-  //   onlyFirstHas: "-",
-  //   onlySeconfHas: "+",
-  // };
-
-  // const diffObj = {};
-
-  // for (const i in allSortedKeys) {
-  //   const key = allSortedKeys[i];
-  //   let status = undefined;
-  //   const value1 = obj1[key];
-  //   const value2 = obj2[key];
-
-  //   // set key status
-  //   if (_.has(obj1, key) && _.has(obj2, key)) {
-  //     if (_.isEqual(value1, value2)) {
-  //       status = "theSame";
-  //     } else status = "hasChanged";
-  //   } else if (_.has(obj1, key) && !_.has(obj2, key)) {
-  //     status = "onlyFirstHas";
-  //   } else if (!_.has(obj1, key) && _.has(obj2, key)) {
-  //     status = "onlySeconfHas";
-  //   }
-
-  //   // check value
-  //   if (status !== "hasChanged") {
-  //     if (_.isPlainObject(value1) && _.isPlainObject(value2)) {
-  //       diffObj[key] = "fuck";
-  //     } else {
-  //       const newKey = `${statuses[status]} ${key}`;
-  //       diffObj[newKey] = _.has(obj1, key) ? value1 : value2;
-  //     }
-  //   } else {
-  //     diffObj[`- ${key}`] = value1;
-  //     diffObj[`+ ${key}`] = value2;
-  //   }
-  // }
-
-  // return diffObj;
 };
 
 const getExtension = (filepath) => path.extname(filepath).slice(1);
