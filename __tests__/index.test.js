@@ -12,7 +12,7 @@ const getFixturePath = (filename) =>
 const readFile = (filename) =>
   fs.readFileSync(getFixturePath(filename), "utf-8");
 
-const file1 = getFixturePath("file1.json"); //C:\projects\frontend-bootcamp-project-46\__fixtures__\file1.json
+const file1 = getFixturePath("file1.json");
 const file2 = getFixturePath("file2.json");
 
 const yaml1 = getFixturePath("file1.yml");
