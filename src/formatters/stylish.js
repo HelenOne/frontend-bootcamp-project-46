@@ -28,11 +28,11 @@ const stylish = (diff) => {
   const iter = (tree, depth) =>
     tree.map((item) => {
       const indentSize = depth * spacesCount;
-      const keyIndent = replacer.repeat(indentSize);
-      const bracketIndent = replacer.repeat(indentSize - spacesCount);
+      const keyIndent = replacer.repeat(indentSize - 2);
+      const bracketIndent = replacer.repeat(indentSize);
 
       const buildObject = (value, status) =>
-        `${keyIndent}${status} ${item.key}: ${stringify(value, depth)}`;
+        `${keyIndent}${status} ${item.key}: ${stringify(value, depth + 1)}`;
 
       switch (item.status) {
         case "removed":
@@ -47,7 +47,7 @@ const stylish = (diff) => {
             buildObject(item.value2, statuses.added),
           ].join("\n");
         case "nested":
-          return `${keyIndent}${item.key}: ${[
+          return `${keyIndent}${statuses.nested} ${item.key}: ${[
             "{",
             ...iter(item.value, depth + 1),
             `${bracketIndent}}`,
