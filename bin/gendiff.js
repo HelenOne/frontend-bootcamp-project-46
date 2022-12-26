@@ -1,5 +1,7 @@
-import { program } from 'commander';
-import gendiff from '../src/index.js';
+#!/usr/bin/env node
+
+import { program } from "commander";
+import gendiff from "../src/index.js";
 
 program
   .description(
