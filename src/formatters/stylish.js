@@ -21,7 +21,7 @@ const stringify = (data, depth) => {
     ([key, value]) => `${keyIndent}${key}: ${stringify(value, depth + 1)}`
   );
 
-  return ["{", ...lines, `${bracketIndent}}`].join("\n");
+  return ["{", ...lines, `${bracketIndent}}`].join("\r\n");
 };
 
 const stylish = (diff) => {
@@ -45,19 +45,19 @@ const stylish = (diff) => {
           return [
             buildObject(item.value1, statuses.removed),
             buildObject(item.value2, statuses.added),
-          ].join("\n");
+          ].join("\r\n");
         case "nested":
           return `${keyIndent}${statuses.nested} ${item.key}: ${[
             "{",
             ...iter(item.children, depth + 1),
             `${bracketIndent}}`,
-          ].join("\n")}`;
+          ].join("\r\n")}`;
         default:
           throw new Error("Unknown type node");
       }
     });
   const result = iter(diff, 1);
-  return ["{", ...result, "}"].join("\n");
+  return ["{", ...result, "}"].join("\r\n");
 };
 
 export default stylish;
