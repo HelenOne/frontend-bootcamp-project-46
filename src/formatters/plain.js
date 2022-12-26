@@ -26,7 +26,7 @@ const plain = (diff) => {
             elem.value1
           )} to ${stringify(elem.value2)}`;
         case "nested":
-          return iter(elem.value, property);
+          return iter(elem.children, property);
         case "theSame":
           return null;
         default:

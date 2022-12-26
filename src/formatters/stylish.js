@@ -49,7 +49,7 @@ const stylish = (diff) => {
         case "nested":
           return `${keyIndent}${statuses.nested} ${item.key}: ${[
             "{",
-            ...iter(item.value, depth + 1),
+            ...iter(item.children, depth + 1),
             `${bracketIndent}}`,
           ].join("\n")}`;
         default:
