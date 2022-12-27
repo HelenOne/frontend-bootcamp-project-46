@@ -34,7 +34,7 @@ const plain = (diff) => {
       }
     });
   const lines = iter(diff, "");
-  return lines.filter((line) => line).join("\r\n");
+  return lines.filter((line) => line).join("\n");
 };
 
 export default plain;

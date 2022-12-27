@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 const getFixturePath = (filename) =>
   path.join(__dirname, "..", "__fixtures__", filename);
 const readFile = (filename) =>
-  fs.readFileSync(getFixturePath(filename), "utf-8");
+  fs.readFileSync(getFixturePath(filename), "utf-8").replace(/\r/g, "");
 
 const file1 = getFixturePath("file1.json");
 const file2 = getFixturePath("file2.json");
