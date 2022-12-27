@@ -16,7 +16,11 @@ const compareObjects = (obj1, obj2) => {
     const value2 = obj2[key];
 
     if (_.isPlainObject(value1) && _.isPlainObject(value2)) {
-      return { key, status: "nested", children: compareObjects(value1, value2) };
+      return {
+        key,
+        status: "nested",
+        children: compareObjects(value1, value2),
+      };
     }
 
     if (_.isEqual(value1, value2)) {
