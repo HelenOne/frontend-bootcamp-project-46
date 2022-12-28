@@ -1,10 +1,10 @@
-import fs from "fs";
-import _ from "lodash";
-import path from "path";
-import parse from "./parser.js";
-import stylish from "./formatters/stylish.js";
-import plain from "./formatters/plain.js";
-import json from "./formatters/json.js";
+import fs from 'fs';
+import _ from 'lodash';
+import path from 'path';
+import parse from './parser.js';
+import stylish from './formatters/stylish.js';
+import plain from './formatters/plain.js';
+import json from './formatters/json.js';
 
 const compareObjects = (obj1, obj2) => {
   const keys1 = Object.keys(obj1);
@@ -18,26 +18,26 @@ const compareObjects = (obj1, obj2) => {
     if (_.isPlainObject(value1) && _.isPlainObject(value2)) {
       return {
         key,
-        status: "nested",
+        status: 'nested',
         children: compareObjects(value1, value2),
       };
     }
 
     if (_.isEqual(value1, value2)) {
-      return { key, status: "theSame", value: value1 };
+      return { key, status: 'theSame', value: value1 };
     }
 
     if (!_.has(obj1, key)) {
-      return { key, status: "added", value: value2 };
+      return { key, status: 'added', value: value2 };
     }
 
     if (!_.has(obj2, key)) {
-      return { key, status: "removed", value: value1 };
+      return { key, status: 'removed', value: value1 };
     }
 
     return {
       key,
-      status: "updated",
+      status: 'updated',
       value1,
       value2,
     };
@@ -46,19 +46,19 @@ const compareObjects = (obj1, obj2) => {
 
 const getExtension = (filepath) => path.extname(filepath).slice(1);
 
-const gendiff = (filepath1, filepath2, format = "stylish") => {
+const gendiff = (filepath1, filepath2, format = 'stylish') => {
   const obj1 = parse(fs.readFileSync(filepath1), getExtension(filepath1));
   const obj2 = parse(fs.readFileSync(filepath2), getExtension(filepath2));
 
   switch (format) {
-    case "stylish":
+    case 'stylish':
       return stylish(compareObjects(obj1, obj2));
-    case "plain":
+    case 'plain':
       return plain(compareObjects(obj1, obj2));
-    case "json":
+    case 'json':
       return json(compareObjects(obj1, obj2));
     default:
-      throw new Error("unknown formatName");
+      throw new Error('unknown formatName');
   }
 };
 

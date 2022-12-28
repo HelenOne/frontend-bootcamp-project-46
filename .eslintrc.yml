@@ -12,6 +12,6 @@ rules:
     - error
     - ignorePackages
     - js: always
-  no-underscore-dangle: [2, { "allow": ["__filename", "__dirname"] }]
+  no-underscore-dangle: [2, { 'allow': ['__filename', '__dirname'] }]
   linebreak-style: 0
-  quotes: [2, "double", { "avoidEscape": true }]
+  quotes: [2, 'single', { 'avoidEscape': true }]

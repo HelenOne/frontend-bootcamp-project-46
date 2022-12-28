@@ -1,12 +1,12 @@
-import _ from "lodash";
+import _ from 'lodash';
 
 const spacesCount = 4;
-const replacer = " ";
+const replacer = ' ';
 const statuses = {
-  nested: " ",
-  added: "+",
-  removed: "-",
-  theSame: " ",
+  nested: ' ',
+  added: '+',
+  removed: '-',
+  theSame: ' ',
 };
 
 const stringify = (data, depth) => {
@@ -21,7 +21,7 @@ const stringify = (data, depth) => {
     ([key, value]) => `${keyIndent}${key}: ${stringify(value, depth + 1)}`,
   );
 
-  return ["{", ...lines, `${bracketIndent}}`].join("\n");
+  return ['{', ...lines, `${bracketIndent}}`].join('\n');
 };
 
 const stylish = (diff) => {
@@ -33,29 +33,29 @@ const stylish = (diff) => {
     const buildObject = (value, status) => `${keyIndent}${status} ${item.key}: ${stringify(value, depth + 1)}`;
 
     switch (item.status) {
-      case "removed":
+      case 'removed':
         return buildObject(item.value, statuses.removed);
-      case "added":
+      case 'added':
         return buildObject(item.value, statuses.added);
-      case "theSame":
+      case 'theSame':
         return buildObject(item.value, statuses.theSame);
-      case "updated":
+      case 'updated':
         return [
           buildObject(item.value1, statuses.removed),
           buildObject(item.value2, statuses.added),
-        ].join("\n");
-      case "nested":
+        ].join('\n');
+      case 'nested':
         return `${keyIndent}${statuses.nested} ${item.key}: ${[
-          "{",
+          '{',
           ...iter(item.children, depth + 1),
           `${bracketIndent}}`,
-        ].join("\n")}`;
+        ].join('\n')}`;
       default:
-        throw new Error("Unknown type node");
+        throw new Error('Unknown type node');
     }
   });
   const result = iter(diff, 1);
-  return ["{", ...result, "}"].join("\n");
+  return ['{', ...result, '}'].join('\n');
 };
 
 export default stylish;
