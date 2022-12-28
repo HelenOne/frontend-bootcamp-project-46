@@ -9,3 +9,6 @@
 
 ### Node CI: 
 [![Node CI](https://github.com/HelenOne/frontend-bootcamp-project-46/actions/workflows/makelint.yml/badge.svg)](https://github.com/HelenOne/frontend-bootcamp-project-46/actions/workflows/makelint.yml)
+
+## Example of usage:
+There should be videos using asciinema here, but I am using Windows
